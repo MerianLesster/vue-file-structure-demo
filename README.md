@@ -1,6 +1,6 @@
-# vue-project
+# Vue File Structure Project
 
-This template should help get you started developing with Vue 3 in Vite.
+A scalable and an interactive Vue.js application that visualizes folder and file structures with expandable and collapsible tree views.
 
 ## Recommended IDE Setup
 
