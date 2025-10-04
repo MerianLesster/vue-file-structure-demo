@@ -4,4 +4,12 @@ type IFile = {
   isFolder?: boolean
   nodes?: IFile[]
 }
-export type { IFile }
+
+type IContent = Record<
+  string,
+  {
+    name: string
+    isOpen: boolean
+  }
+>
+export type { IFile, IContent }

@@ -44,7 +44,7 @@ export const fileExplorerData: IFile = {
       isFolder: true,
       nodes: [
         {
-          id: '21',
+          id: '20',
           name: 'components',
           isFolder: true,
           nodes: [

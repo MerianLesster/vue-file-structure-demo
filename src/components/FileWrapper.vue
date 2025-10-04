@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 import File from '@/components/File.vue'
-import type { IFile } from '@/types/file'
+import type { IContent, IFile } from '@/types/file'
 
 const { files } = defineProps<{ files: IFile[] }>()
-const toggleStore = defineModel<Record<string, boolean>>({ required: true })
+const toggleStore = defineModel<IContent>({ required: true })
 </script>
 
 <style scoped></style>

@@ -1,32 +1,31 @@
 <template>
-  <FileWrapper :files="files" v-model="toggleStore" />
+  <div class="app-wrapper">
+    <div class="sidebar-wrapper">
+      <Sidebar />
+    </div>
+    <div class="router-view">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import FileWrapper from '@/components/FileWrapper.vue'
-import { onMounted, ref } from 'vue'
-
-import { fileExplorerData } from '@/utils/data'
-import type { IFile } from './types/file'
-
-const files = ref<IFile[]>([fileExplorerData])
-
-const toggleStore = ref({} as Record<string, boolean>)
-
-onMounted(() => {
-  const iterate = (files: IFile[], obj: Record<string, boolean>) => {
-    files.forEach((file) => {
-      if (file.isFolder) {
-        obj[file.id] = false
-      }
-      if (file.nodes && file.nodes.length > 0) {
-        iterate(file.nodes, obj)
-      }
-    })
-  }
-
-  iterate(files.value, toggleStore.value)
-})
+import Sidebar from './components/Sidebar.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.app-wrapper .sidebar-wrapper {
+  width: 300px;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+.app-wrapper .router-view {
+  padding: 10px;
+}
+</style>
