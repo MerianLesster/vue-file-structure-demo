@@ -10,7 +10,16 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const router = useRoute()
-const content = computed(() => router.query.file)
+
+// this is a mock, in real app you would
+// route to the file path and fetch the content
+const content = computed(() => {
+  const file = router.query?.file
+  if (typeof file === 'string') {
+    return file.split('+')[1]
+  }
+  return null
+})
 </script>
 
 <style scoped></style>

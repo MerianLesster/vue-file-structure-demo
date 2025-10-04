@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="file-wrapper" @click="selectFile">
+    <div
+      :class="{
+        'file-wrapper': true,
+        selected: isItemSelected,
+      }"
+      @click="selectFile"
+    >
       <div style="width: 10px">
         <i
           v-show="file?.isFolder"
@@ -19,9 +25,10 @@
 <script setup lang="ts">
 import type { IContent, IFile } from '@/types/file'
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 const { file } = defineProps<{ file: IFile }>()
 const { name } = file
 
@@ -34,12 +41,15 @@ const folderIcon = computed(() => {
   return content.value.isOpen ? '📂' : '📁'
 })
 
+const queryValue = computed(() => `${file.id}+${file.name.replace(' ', '')}`)
+const isItemSelected = computed(() => route.query?.file === queryValue.value)
+
 const selectFile = () => {
   content.value.isOpen = !content.value.isOpen
   if (!file?.isFolder) {
     router.push({
       query: {
-        file: file.name,
+        file: queryValue.value,
       },
     })
   }
@@ -57,6 +67,10 @@ p {
   cursor: pointer;
   padding: 3px 10px;
   border-radius: 5px;
+  user-select: none;
+}
+.file-wrapper.selected {
+  background-color: #7fcff4 !important;
 }
 .hide {
   display: none;
@@ -68,6 +82,6 @@ p {
   margin-left: 10px;
 }
 .file-wrapper:hover {
-  background-color: #0000ff6b;
+  background-color: #7fcff48a;
 }
 </style>
