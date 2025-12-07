@@ -6,6 +6,15 @@
         selected: isItemSelected,
       }"
       @click="selectFile"
+      tabindex="0"
+      @keydown="
+        (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            selectFile()
+          }
+        }
+      "
     >
       <i v-show="!isFile" :class="`pi ${isOpen ? 'pi-angle-down' : 'pi-angle-right'}`"></i>
       <p>{{ computedIcon }}</p>
