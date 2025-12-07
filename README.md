@@ -1,4 +1,4 @@
-# Vue File Structure Project
+# Vue File Structure Project (with accessibility in mind)
 
 A scalable and an interactive Vue.js application that visualizes folder and file structures with expandable and collapsible tree views.
 
