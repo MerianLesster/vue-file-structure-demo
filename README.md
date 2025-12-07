@@ -2,6 +2,12 @@
 
 A scalable and an interactive Vue.js application that visualizes folder and file structures with expandable and collapsible tree views.
 
+
+
+https://github.com/user-attachments/assets/50d940f9-7255-4313-8866-1d97ad253cf3
+
+
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
